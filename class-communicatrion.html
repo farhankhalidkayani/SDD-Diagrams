@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Rent - Communication Class Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Communication Class Diagram</h1>
+    
+    <div class="description">
+        <p>This class diagram shows the structure of the Communication component in the Go-Rent system.</p>
+        <p>It illustrates the classes responsible for handling messages, conversations, and notifications between users.</p>
+    </div>
+    
+    <div class="diagram-container">
+        <pre class="mermaid">
+        classDiagram
+            Conversation "1" -- "*" Message : contains
+            
+            class Conversation {
+                +conversationId : int
+                +user1Id : int
+                +user2Id : int
+                +itemId : int
+                +lastMsgDate : datetime
+                +status : string
+                +startConversation(user1Id, user2Id, itemId) : Conversation
+                +getConversationById(conversationId) : Conversation
+                +getConversationsByUserId(userId) : Conversation[]
+                +markAsInactive(conversationId) : boolean
+            }
+            
+            class Message {
+                +messageId : int
+                +conversationId : int
+                +senderId : int
+                +content : string
+                +sentAt : datetime
+                +isRead : boolean
+                +sendMessage(conversationId, senderId, content) : Message
+                +getMessages(conversationId) : Message[]
+                +markAsRead(messageId) : boolean
+                +getUnreadMessageCount(userId) : int
+            }
+            
+            class Notification {
+                +notificationId : int
+                +userId : int
+                +type : string
+                +content : string
+                +isRead : boolean
+                +createdAt : datetime
+                +sendNotification(userId, type, content) : Notification
+                +getNotificationsByUserId(userId) : Notification[]
+                +markAsRead(notificationId) : boolean
+                +getUnreadNotificationCount(userId) : int
+            }
+        </pre>
+    </div>
+    
+    <div class="description">
+        <h3>Key Classes:</h3>
+        <ul>
+            <li><strong>Conversation</strong>: Represents a messaging thread between users about a specific item</li>
+            <li><strong>Message</strong>: Individual messages within a conversation</li>
+            <li><strong>Notification</strong>: System notifications for various events (bookings, payments, etc.)</li>
+        </ul>
+        
+        <h3>Key Methods:</h3>
+        <ul>
+            <li><strong>startConversation()</strong>: Creates a new conversation between users</li>
+            <li><strong>sendMessage()</strong>: Sends a message in a conversation</li>
+            <li><strong>getConversations()</strong>: Retrieves all conversations for a user</li>
+            <li><strong>markAsRead()</strong>: Marks messages or notifications as read</li>
+            <li><strong>sendNotification()</strong>: Sends a notification to a user</li>
+            <li><strong>getUnreadMessageCount()</strong>: Gets count of unread messages for a user</li>
+        </ul>
+    </div>
+    
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
