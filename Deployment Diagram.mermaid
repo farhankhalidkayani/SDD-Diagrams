@@ -1,0 +1,73 @@
+flowchart TD
+    subgraph "Client Layer"
+        WebApp[Web Application\nReact.js]
+        MobileApp[Mobile Application\nReact Native]
+    end
+    
+    subgraph "CDN"
+        CloudFront[CloudFront/CDN]
+    end
+    
+    subgraph "API Gateway Layer"
+        APIGateway[API Gateway\nAmazon API Gateway]
+    end
+    
+    subgraph "Load Balancer"
+        ELB[Elastic Load Balancer]
+    end
+    
+    subgraph "Container Orchestration"
+        ECS[ECS/Kubernetes Cluster]
+        
+        subgraph "Microservices"
+            AuthService[Authentication Service\nNode.js]
+            UserService[User Service\nNode.js]
+            ItemService[Item Service\nNode.js]
+            BookingService[Booking Service\nNode.js]
+            PaymentService[Payment Service\nNode.js]
+            NotificationService[Notification Service\nNode.js]
+            SearchService[Search Service\nNode.js]
+        end
+    end
+    
+    subgraph "Database Layer"
+        RDS[(Primary Database\nPostgreSQL)]
+        Redis[(Caching Layer\nRedis)]
+        ElasticSearch[(Search Index\nElasticsearch)]
+    end
+    
+    subgraph "Storage Layer"
+        S3[(Object Storage\nS3)]
+    end
+    
+    subgraph "External Services"
+        PaymentGateway[Payment Gateway\nStripe/PayPal]
+        EmailService[Email Service\nSendGrid/SES]
+        SMSService[SMS Service\nTwilio]
+        MapService[Map Service\nGoogle Maps]
+    end
+    
+    WebApp --> CloudFront
+    MobileApp --> APIGateway
+    CloudFront --> APIGateway
+    APIGateway --> ELB
+    ELB --> ECS
+    
+    AuthService --> RDS
+    UserService --> RDS
+    ItemService --> RDS
+    BookingService --> RDS
+    PaymentService --> RDS
+    NotificationService --> RDS
+    
+    ItemService --> S3
+    SearchService --> ElasticSearch
+    
+    AuthService --> Redis
+    UserService --> Redis
+    ItemService --> Redis
+    
+    PaymentService --> PaymentGateway
+    NotificationService --> EmailService
+    NotificationService --> SMSService
+    ItemService --> MapService
