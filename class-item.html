@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Rent - Listing Management Class Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listing Management Class Diagram</h1>
+    
+    <div class="description">
+        <p>This class diagram shows the structure of the Listing Management component in the Go-Rent system.</p>
+        <p>It illustrates the classes responsible for handling rental item listings, categories, images, and attributes.</p>
+    </div>
+    
+    <div class="diagram-container">
+        <pre class="mermaid">
+        classDiagram
+            Item "1" -- "*" ItemCategory : has
+            Item "1" -- "*" ItemImage : has
+            Item "1" -- "*" ItemAttribute : has
+            
+            class Item {
+                +itemId : int
+                +userId : int
+                +title : string
+                +description : string
+                +price : decimal
+                +securityDeposit : decimal
+                +rentalTerms : string
+                +availability : json
+                +status : enum
+                +createListing(userId, itemData) : Item
+                +updateListing(itemId, itemData) : boolean
+                +getItemById(itemId) : Item
+                +getItemsByUserId(userId) : Item[]
+                +markItemAsUnavailable(itemId) : boolean
+            }
+            
+            class ItemCategory {
+                +categoryId : int
+                +parentId : int
+                +name : string
+                +description : string
+                +getCategoryById(categoryId) : ItemCategory
+                +getAllCategories() : ItemCategory[]
+                +getCategoryTree() : ItemCategory[]
+            }
+            
+            class ItemImage {
+                +imageId : int
+                +itemId : int
+                +imageUrl : string
+                +isPrimary : boolean
+                +uploadDate : datetime
+                +uploadItemImages(itemId, imageFiles) : ItemImage[]
+                +getImagesByItemId(itemId) : ItemImage[]
+                +setPrimaryImage(imageId) : boolean
+                +deleteImage(imageId) : boolean
+            }
+            
+            class ItemAttribute {
+                +attributeId : int
+                +itemId : int
+                +name : string
+                +value : string
+                +addAttribute(itemId, name, value) : ItemAttribute
+                +getAttributesByItemId(itemId) : ItemAttribute[]
+                +updateAttribute(attributeId, value) : boolean
+            }
+        </pre>
+    </div>
+    
+    <div class="description">
+        <h3>Key Classes:</h3>
+        <ul>
+            <li><strong>Item</strong>: Core class representing rental items with their details and availability</li>
+            <li><strong>ItemCategory</strong>: Represents categories for organizing items</li>
+            <li><strong>ItemImage</strong>: Stores and manages images associated with items</li>
+            <li><strong>ItemAttribute</strong>: Flexible attributes for different types of rental items</li>
+        </ul>
+        
+        <h3>Key Methods:</h3>
+        <ul>
+            <li><strong>createListing()</strong>: Creates a new item listing</li>
+            <li><strong>updateListing()</strong>: Updates an existing listing</li>
+            <li><strong>uploadItemImages()</strong>: Uploads and associates images with a listing</li>
+            <li><strong>getItemsByUserId()</strong>: Retrieves all items for a specific user</li>
+            <li><strong>markItemAsUnavailable()</strong>: Updates item availability status</li>
+            <li><strong>getCategoryTree()</strong>: Gets hierarchical category structure</li>
+        </ul>
+    </div>
+    
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
