@@ -1,1 +1,150 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Rent - Item Listing Process Sequence Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+        .process-step {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            border-left: 3px solid #3498db;
+        }
+        .process-step h4 {
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Item Listing Process Sequence Diagram</h1>
+    
+    <div class="description">
+        <p>This sequence diagram illustrates the step-by-step process of creating and publishing a rental item listing in the Go-Rent system.</p>
+        <p>It shows the interactions between the Provider (rental item owner) and various system components throughout the listing creation process.</p>
+    </div>
+    
+    <div class="diagram-container">
+        <pre class="mermaid">
+        sequenceDiagram
+            actor Provider
+            participant UI as Web/Mobile UI
+            participant API as API Gateway
+            participant IS as Item Service
+            participant MS as Media Service
+            participant VS as Verification Service
+            participant DB as Database
+            participant S3 as Cloud Storage
+            
+            Provider->>UI: Navigate to create listing
+            UI->>API: GET /api/categories
+            API->>DB: Fetch categories
+            DB-->>API: Return categories
+            API-->>UI: Return category list
+            UI-->>Provider: Display listing form
+            
+            Provider->>UI: Fill item details
+            Provider->>UI: Upload images
+            UI->>API: POST /api/items
+            API->>IS: Create listing
+            IS->>DB: Save basic item data
+            DB-->>IS: Return item ID
+            IS-->>API: Return item details
+            API-->>UI: Return created item
+            
+            UI->>API: POST /api/items/{id}/images
+            API->>MS: Upload images
+            MS->>S3: Store images
+            S3-->>MS: Return image URLs
+            MS->>DB: Save image references
+            DB-->>MS: Confirm save
+            MS-->>API: Return image details
+            API-->>UI: Return upload success
+            UI-->>Provider: Display completed listing
+            
+            IS->>VS: Trigger listing verification
+            VS->>DB: Update item status (pending)
+            DB-->>VS: Confirm update
+            VS-->>IS: Return verification status
+            
+            VS->>DB: If approved, update item status (available)
+            DB-->>VS: Confirm update
+            VS->>Provider: Notify listing approval
+        </pre>
+    </div>
+    
+    <div class="description">
+        <h3>Process Overview:</h3>
+        
+        <div class="process-step">
+            <h4>1. Listing Form Preparation</h4>
+            <p>The Provider navigates to the listing creation page, and the system fetches available categories to display in the form.</p>
+        </div>
+        
+        <div class="process-step">
+            <h4>2. Basic Item Creation</h4>
+            <p>The Provider enters item details, and the system creates a basic listing record in the database.</p>
+        </div>
+        
+        <div class="process-step">
+            <h4>3. Image Upload</h4>
+            <p>The Provider uploads images for the item, which are stored in cloud storage, and references are saved in the database.</p>
+        </div>
+        
+        <div class="process-step">
+            <h4>4. Listing Verification</h4>
+            <p>The system initiates a verification process for the listing, temporarily setting its status to "pending".</p>
+        </div>
+        
+        <div class="process-step">
+            <h4>5. Listing Approval</h4>
+            <p>After verification, the listing status is updated to "available", and the Provider is notified of the approval.</p>
+        </div>
+    </div>
+    
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
