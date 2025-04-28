@@ -1,0 +1,53 @@
+classDiagram
+    Item "1" -- "*" ItemCategory : has
+    Item "1" -- "*" ItemImage : has
+    Item "1" -- "*" ItemAttribute : has
+    
+    class Item {
+        +itemId : int
+        +userId : int
+        +title : string
+        +description : string
+        +price : decimal
+        +securityDeposit : decimal
+        +rentalTerms : string
+        +availability : json
+        +status : enum
+        +createListing(userId, itemData) : Item
+        +updateListing(itemId, itemData) : boolean
+        +getItemById(itemId) : Item
+        +getItemsByUserId(userId) : Item[]
+        +markItemAsUnavailable(itemId) : boolean
+    }
+    
+    class ItemCategory {
+        +categoryId : int
+        +parentId : int
+        +name : string
+        +description : string
+        +getCategoryById(categoryId) : ItemCategory
+        +getAllCategories() : ItemCategory[]
+        +getCategoryTree() : ItemCategory[]
+    }
+    
+    class ItemImage {
+        +imageId : int
+        +itemId : int
+        +imageUrl : string
+        +isPrimary : boolean
+        +uploadDate : datetime
+        +uploadItemImages(itemId, imageFiles) : ItemImage[]
+        +getImagesByItemId(itemId) : ItemImage[]
+        +setPrimaryImage(imageId) : boolean
+        +deleteImage(imageId) : boolean
+    }
+    
+    class ItemAttribute {
+        +attributeId : int
+        +itemId : int
+        +name : string
+        +value : string
+        +addAttribute(itemId, name, value) : ItemAttribute
+        +getAttributesByItemId(itemId) : ItemAttribute[]
+        +updateAttribute(attributeId, value) : boolean
+    }
