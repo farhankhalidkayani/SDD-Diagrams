@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Rent - Review and Rating Class Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Review and Rating Class Diagram</h1>
+    
+    <div class="description">
+        <p>This class diagram shows the structure of the Review and Rating component in the Go-Rent system.</p>
+        <p>It illustrates the class responsible for handling user reviews and ratings for rental items and providers.</p>
+    </div>
+    
+    <div class="diagram-container">
+        <pre class="mermaid">
+        classDiagram
+            class Review {
+                +reviewId : int
+                +itemId : int
+                +reviewerId : int
+                +providerId : int
+                +bookingId : int
+                +rating : int
+                +comment : string
+                +createdAt : datetime
+                +status : enum
+                +createReview(bookingId, rating, comment) : Review
+                +getReviewById(reviewId) : Review
+                +getItemReviews(itemId) : Review[]
+                +getUserReviews(userId) : Review[]
+                +calculateAverageRating(itemId) : decimal
+                +moderateReview(reviewId, status) : boolean
+                +reportReview(reviewId, reason) : boolean
+            }
+        </pre>
+    </div>
+    
+    <div class="description">
+        <h3>Key Class:</h3>
+        <ul>
+            <li><strong>Review</strong>: Represents user reviews and ratings for items and providers</li>
+        </ul>
+        
+        <h3>Key Methods:</h3>
+        <ul>
+            <li><strong>createReview()</strong>: Creates a review for a completed booking</li>
+            <li><strong>getItemReviews()</strong>: Retrieves all reviews for an item</li>
+            <li><strong>getUserReviews()</strong>: Retrieves all reviews for a user</li>
+            <li><strong>calculateAverageRating()</strong>: Calculates average rating for an item</li>
+            <li><strong>moderateReview()</strong>: Updates review status for moderation</li>
+            <li><strong>reportReview()</strong>: Allows users to report inappropriate reviews</li>
+        </ul>
+        
+        <h3>Review Attributes:</h3>
+        <ul>
+            <li><strong>reviewId</strong>: Unique identifier for the review</li>
+            <li><strong>itemId</strong>: The item being reviewed</li>
+            <li><strong>reviewerId</strong>: User who wrote the review</li>
+            <li><strong>providerId</strong>: Provider of the rental item</li>
+            <li><strong>bookingId</strong>: Associated booking that led to this review</li>
+            <li><strong>rating</strong>: Numerical rating (typically 1-5)</li>
+            <li><strong>comment</strong>: Textual feedback</li>
+            <li><strong>status</strong>: Review status (pending, approved, rejected)</li>
+        </ul>
+    </div>
+    
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
