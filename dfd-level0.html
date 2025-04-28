@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Rent - Data Flow Diagram Level 0</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Flow Diagram (Level 0)</h1>
+    
+    <div class="description">
+        <p>This is a context-level data flow diagram (DFD) that shows the Go-Rent system as a single process interacting with external entities.</p>
+        <p>It represents the system boundary and the main data flows between the system and external entities at the highest level of abstraction.</p>
+    </div>
+    
+    <div class="diagram-container">
+        <pre class="mermaid">
+        flowchart LR
+            Renters([Renters])
+            Providers([Providers])
+            GoRent((Go-Rent\nSystem))
+            PaymentGateway[(Payment\nGateway)]
+            
+            Renters -- "Register/Login" --> GoRent
+            Renters -- "Book Items" --> GoRent
+            GoRent -- "Rent Items" --> Providers
+            Providers -- "List Items" --> GoRent
+            GoRent -- "Process Payments" --> PaymentGateway
+        </pre>
+    </div>
+    
+    <div class="description">
+        <h3>Key Elements:</h3>
+        <ul>
+            <li><strong>Renters</strong>: Users who rent items from the platform</li>
+            <li><strong>Providers</strong>: Users who list items for rent</li>
+            <li><strong>Go-Rent System</strong>: The entire application as a single process</li>
+            <li><strong>Payment Gateway</strong>: External payment processing service</li>
+        </ul>
+        
+        <h3>Data Flows:</h3>
+        <ul>
+            <li><strong>Register/Login</strong>: User authentication data flow</li>
+            <li><strong>Book Items</strong>: Rental request data flow</li>
+            <li><strong>Rent Items</strong>: Items being rented to users</li>
+            <li><strong>List Items</strong>: Rental providers adding items to the platform</li>
+            <li><strong>Process Payments</strong>: Payment data sent to/from the payment gateway</li>
+        </ul>
+    </div>
+    
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
