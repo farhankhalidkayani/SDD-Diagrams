@@ -1,0 +1,45 @@
+classDiagram
+    Booking "1" -- "*" Payment : generates
+    Payment "1" -- "1" Transaction : creates
+    
+    class Booking {
+        +bookingId : int
+        +itemId : int
+        +renterId : int
+        +startDate : date
+        +endDate : date
+        +totalAmount : decimal
+        +securityDeposit : decimal
+        +status : enum
+        +createBooking(renterId, itemId, dates) : Booking
+        +confirmBooking(bookingId) : boolean
+        +cancelBooking(bookingId, reason) : boolean
+        +getBookingById(bookingId) : Booking
+        +getBookingsByRenterId(renterId) : Booking[]
+        +getBookingsByItemId(itemId) : Booking[]
+    }
+    
+    class Payment {
+        +paymentId : int
+        +bookingId : int
+        +amount : decimal
+        +paymentMethod : string
+        +status : enum
+        +paymentDate : datetime
+        +processPayment(bookingId, paymentDetails) : Payment
+        +refundPayment(paymentId) : boolean
+        +getPaymentByBookingId(bookingId) : Payment
+        +refundDeposit(bookingId) : boolean
+    }
+    
+    class Transaction {
+        +transactionId : int
+        +paymentId : int
+        +status : string
+        +createdAt : datetime
+        +updatedAt : datetime
+        +metadata : json
+        +createTransaction(paymentId, data) : Transaction
+        +updateTransactionStatus(transactionId, status) : boolean
+        +getTransactionByPaymentId(paymentId) : Transaction
+    }
