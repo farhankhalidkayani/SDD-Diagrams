@@ -1,0 +1,17 @@
+```mermaid
+flowchart TD
+    ClientApps[Client Apps\nWeb & Mobile] <--> ApiGateway[API Gateway]
+    ApiGateway <--> LoadBalancer[Load Balancer]
+    CDN[CDN] <--> LoadBalancer
+    
+    LoadBalancer --> AuthService[Auth Service]
+    LoadBalancer --> UserService[User Service]
+    LoadBalancer --> ItemService[Item Service]
+    LoadBalancer --> PaymentService[Payment Service]
+    
+    AuthService --> Database[(Database)]
+    UserService --> Database
+    ItemService --> Database
+    ItemService --> Storage[(Storage)]
+    PaymentService --> Database
+```
