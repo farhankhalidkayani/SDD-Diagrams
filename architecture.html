@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Rent - System Architecture Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>System Architecture Diagram</h1>
+    
+    <div class="description">
+        <p>This diagram shows the high-level architecture of the Go-Rent platform. It illustrates the main components of the system and how they interact with each other.</p>
+        <p>The architecture follows a microservices pattern with clear separation of concerns between different system components.</p>
+    </div>
+    
+    <div class="diagram-container">
+        <pre class="mermaid">
+        flowchart TD
+            ClientApps[Client Apps\nWeb & Mobile] <--> ApiGateway[API Gateway]
+            ApiGateway <--> LoadBalancer[Load Balancer]
+            CDN[CDN] <--> LoadBalancer
+            
+            LoadBalancer --> AuthService[Auth Service]
+            LoadBalancer --> UserService[User Service]
+            LoadBalancer --> ItemService[Item Service]
+            LoadBalancer --> PaymentService[Payment Service]
+            
+            AuthService --> Database[(Database)]
+            UserService --> Database
+            ItemService --> Database
+            ItemService --> Storage[(Storage)]
+            PaymentService --> Database
+        </pre>
+    </div>
+    
+    <div class="description">
+        <h3>Component Descriptions:</h3>
+        <ul>
+            <li><strong>Client Apps</strong>: Web and mobile interfaces for users to interact with the system</li>
+            <li><strong>API Gateway</strong>: Central entry point that routes requests to appropriate services</li>
+            <li><strong>Load Balancer</strong>: Distributes traffic to ensure optimal performance</li>
+            <li><strong>CDN</strong>: Content Delivery Network for fast delivery of static assets</li>
+            <li><strong>Auth Service</strong>: Handles authentication and authorization</li>
+            <li><strong>User Service</strong>: Manages user profiles and settings</li>
+            <li><strong>Item Service</strong>: Handles rental item listings and management</li>
+            <li><strong>Payment Service</strong>: Processes payments and handles financial transactions</li>
+            <li><strong>Database</strong>: Stores application data</li>
+            <li><strong>Storage</strong>: Stores files like images and documents</li>
+        </ul>
+    </div>
+    
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
