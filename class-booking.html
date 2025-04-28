@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Rent - Booking and Transaction Class Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking and Transaction Class Diagram</h1>
+    
+    <div class="description">
+        <p>This class diagram shows the structure of the Booking and Transaction component in the Go-Rent system.</p>
+        <p>It illustrates the classes responsible for handling bookings, payments, and financial transactions.</p>
+    </div>
+    
+    <div class="diagram-container">
+        <pre class="mermaid">
+        classDiagram
+            Booking "1" -- "*" Payment : generates
+            Payment "1" -- "1" Transaction : creates
+            
+            class Booking {
+                +bookingId : int
+                +itemId : int
+                +renterId : int
+                +startDate : date
+                +endDate : date
+                +totalAmount : decimal
+                +securityDeposit : decimal
+                +status : enum
+                +createBooking(renterId, itemId, dates) : Booking
+                +confirmBooking(bookingId) : boolean
+                +cancelBooking(bookingId, reason) : boolean
+                +getBookingById(bookingId) : Booking
+                +getBookingsByRenterId(renterId) : Booking[]
+                +getBookingsByItemId(itemId) : Booking[]
+            }
+            
+            class Payment {
+                +paymentId : int
+                +bookingId : int
+                +amount : decimal
+                +paymentMethod : string
+                +status : enum
+                +paymentDate : datetime
+                +processPayment(bookingId, paymentDetails) : Payment
+                +refundPayment(paymentId) : boolean
+                +getPaymentByBookingId(bookingId) : Payment
+                +refundDeposit(bookingId) : boolean
+            }
+            
+            class Transaction {
+                +transactionId : int
+                +paymentId : int
+                +status : string
+                +createdAt : datetime
+                +updatedAt : datetime
+                +metadata : json
+                +createTransaction(paymentId, data) : Transaction
+                +updateTransactionStatus(transactionId, status) : boolean
+                +getTransactionByPaymentId(paymentId) : Transaction
+            }
+        </pre>
+    </div>
+    
+    <div class="description">
+        <h3>Key Classes:</h3>
+        <ul>
+            <li><strong>Booking</strong>: Represents rental booking requests and confirmations</li>
+            <li><strong>Payment</strong>: Handles payment processing for bookings</li>
+            <li><strong>Transaction</strong>: Records detailed transaction information for auditing and tracking</li>
+        </ul>
+        
+        <h3>Key Methods:</h3>
+        <ul>
+            <li><strong>createBooking()</strong>: Creates a new booking request</li>
+            <li><strong>confirmBooking()</strong>: Confirms a booking request</li>
+            <li><strong>processPayment()</strong>: Processes payment for a booking</li>
+            <li><strong>refundDeposit()</strong>: Refunds security deposit after rental</li>
+            <li><strong>cancelBooking()</strong>: Cancels a booking and initiates refund if needed</li>
+            <li><strong>createTransaction()</strong>: Creates a transaction record for a payment</li>
+        </ul>
+    </div>
+    
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
