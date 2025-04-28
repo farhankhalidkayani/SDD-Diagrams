@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Rent - User Management Class Diagram</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .diagram-container {
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .description {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+        }
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        a.back-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Management Class Diagram</h1>
+    
+    <div class="description">
+        <p>This class diagram shows the structure of the User Management component in the Go-Rent system.</p>
+        <p>It illustrates the classes responsible for handling user accounts, profiles, addresses, and roles, along with their attributes and methods.</p>
+    </div>
+    
+    <div class="diagram-container">
+        <pre class="mermaid">
+        classDiagram
+            User "1" -- "1" UserProfile : has
+            User "1" -- "*" Address : has
+            User "1" -- "1" UserRole : has
+            
+            class User {
+                +userId : int
+                +email : string
+                +passwordHash : string
+                +phone : string
+                +isVerified : boolean
+                +createDate : datetime
+                +userType : enum
+                +status : enum
+                +registerUser(userData) : User
+                +authenticateUser(email, password) : boolean
+                +verifyUserIdentity(userId, documentData) : boolean
+                +updateUserStatus(userId, status) : boolean
+            }
+            
+            class UserProfile {
+                +profileId : int
+                +userId : int
+                +firstName : string
+                +lastName : string
+                +dateOfBirth : date
+                +profilePicUrl : string
+                +bio : string
+                +gender : string
+                +updateUserProfile(userId, profileData) : boolean
+                +getProfileByUserId(userId) : UserProfile
+            }
+            
+            class Address {
+                +addressId : int
+                +userId : int
+                +street : string
+                +city : string
+                +state : string
+                +country : string
+                +postalCode : string
+                +isDefault : boolean
+                +addAddress(userId, addressData) : Address
+                +updateAddress(addressId, addressData) : boolean
+                +getAddressesByUserId(userId) : Address[]
+                +setDefaultAddress(addressId) : boolean
+            }
+            
+            class UserRole {
+                +roleId : int
+                +userId : int
+                +roleName : string
+                +changeUserRole(userId, roleId) : boolean
+                +getRoleByUserId(userId) : UserRole
+            }
+        </pre>
+    </div>
+    
+    <div class="description">
+        <h3>Key Classes:</h3>
+        <ul>
+            <li><strong>User</strong>: Core class representing user accounts with authentication methods</li>
+            <li><strong>UserProfile</strong>: Contains personal information about the user</li>
+            <li><strong>Address</strong>: Stores location information for delivery and pickup</li>
+            <li><strong>UserRole</strong>: Defines the role and permissions of the user</li>
+        </ul>
+        
+        <h3>Key Methods:</h3>
+        <ul>
+            <li><strong>registerUser()</strong>: Creates a new user account</li>
+            <li><strong>authenticateUser()</strong>: Validates login credentials</li>
+            <li><strong>verifyUserIdentity()</strong>: Processes ID verification</li>
+            <li><strong>updateUserProfile()</strong>: Updates profile information</li>
+            <li><strong>addAddress()</strong>: Adds a new address for the user</li>
+            <li><strong>changeUserRole()</strong>: Updates user permissions</li>
+        </ul>
+        
+        <h3>Relationships:</h3>
+        <ul>
+            <li>A User has exactly one UserProfile</li>
+            <li>A User has zero or more Addresses</li>
+            <li>A User has exactly one UserRole</li>
+        </ul>
+        
+        <h3>User Types:</h3>
+        <ul>
+            <li><strong>Renter</strong>: Users who rent items from others</li>
+            <li><strong>Provider</strong>: Users who list items for rent</li>
+            <li><strong>Admin</strong>: System administrators with advanced permissions</li>
+        </ul>
+    </div>
+    
+    <a href="index.html" class="back-link">← Back to Index</a>
+    
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+</body>
+</html>
