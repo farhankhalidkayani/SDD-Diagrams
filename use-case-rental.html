@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go-Rent - Rental Process Use Case Diagram</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      .diagram-container {
+        margin: 40px 0;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .description {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+      }
+      a.back-link {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      a.back-link:hover {
+        background-color: #2980b9;
+      }
+      .relationship {
+        margin-bottom: 15px;
+        padding-left: 20px;
+        border-left: 3px solid #3498db;
+      }
+      .relationship h4 {
+        margin-bottom: 5px;
+        color: #2c3e50;
+      }
+      .uml-legend {
+        margin-top: 30px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+      }
+      .uml-legend h4 {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Rental Process Use Case Diagram</h1>
+
+    <div class="description">
+      <p>
+        This detailed use case diagram focuses on the rental process in the
+        Go-Rent system, showing the various use cases and their relationships.
+      </p>
+      <p>
+        It demonstrates the use of include and generalization relationships
+        between use cases as specified in standard UML notation.
+      </p>
+    </div>
+
+    <div class="diagram-container">
+      <img
+        src="//www.plantuml.com/plantuml/png/VLHDSnen3BtxLsYuv9Jqdiam8QJ3z92P3XnwwKNrAk3khip8tb3wyT-BhGIqbER4whqdwqcokKyP9GzzvwvWbVTTuBLBRU0j2lOm9FAO27uvW0VqxLhYmCqyTb7WooPaMlMnfK96QKYKU4HfLnrcMWZk7S1C9Ex-G_aSvNAk4RnJ-OypReLyHbvtb_rcGKu78N5-pt0vyWeUwJam0PRooTKVc2o9Cya4C85-lX6V9Rw4HYdGm92uxm_ghxpQfqozQXHJnDJB6u9KGVXMdAFitQchoI9UbyAWURVL1NQbegUK9hNjAtZ2m6LpK5QN71otE5aHYj_0SnJubAbFrOk2DRRQXnZRgggY4fN0AfwmfRTEggW0hx7LpRodRVwmfE_aSpqfyBecAAF4-6J6DOsa2hqYLZj7zjIDj0fTq7xyaOcRuzX8GcngXXAAsuGbvK7uD0QDIpXMlGJQ7GxPaWHYJwgjw0bq07Kz2s8IxC9Fp24o27Nr8st2DZaOcuVhwz_JVtgtRYygjD2iQI1bBBUe0QevvzNiyk7cPdhSCzp2tPtcJASEJEDLTjxRIAulQ1wPoxxr2K6Efoi9kv0tC70JvA2W1Z2bw8CQS_gq3dqPSmOzMZIGlNWMDKCnk9smnUrO3MnsRi6pvJfzzihQUss9Isdsd-2y5tTFt0nzznS0"
+        alt="UML Use Case Diagram for Go-Rent Rental Process"
+        style="max-width: 100%; height: auto"
+      />
+    </div>
+
+    <div class="uml-legend">
+      <h4>UML Notation Legend</h4>
+      <ul>
+        <li>
+          <strong>Actors</strong>: Represented as stick figures (Renter,
+          Provider, Payment System)
+        </li>
+        <li>
+          <strong>Use Cases</strong>: Represented as ovals inside the system
+          boundary
+        </li>
+        <li>
+          <strong>System Boundary</strong>: Rectangle containing all use cases
+        </li>
+        <li>
+          <strong>Include Relationship</strong>: Dashed arrow with
+          &lt;&lt;include&gt;&gt; stereotype, pointing from base use case to
+          included use case
+        </li>
+        <li>
+          <strong>Generalization Relationship</strong>: Solid line with hollow
+          arrowhead, pointing from specialized use case to general use case
+        </li>
+        <li>
+          <strong>Associations</strong>: Solid lines connecting actors to use
+          cases they interact with
+        </li>
+      </ul>
+    </div>
+
+    <div class="description">
+      <h3>Use Case Relationships:</h3>
+
+      <div class="relationship">
+        <h4>Include Relationships</h4>
+        <p>
+          An include relationship specifies that a use case contains the
+          behavior defined in another use case.
+        </p>
+        <ul>
+          <li>
+            <strong>Book Item includes Verify Item Availability</strong>: When
+            booking an item, the system must verify the item is available for
+            the requested dates
+          </li>
+          <li>
+            <strong>Book Item includes Calculate Total Cost</strong>: When
+            booking an item, the system calculates the total cost including
+            rental fee and deposit
+          </li>
+          <li>
+            <strong>Make Payment includes Process Security Deposit</strong>:
+            Payment processing includes handling the security deposit
+          </li>
+          <li>
+            <strong>Make Payment includes Generate Invoice</strong>: Creating an
+            invoice is part of the payment process
+          </li>
+          <li>
+            <strong>Manage Booking includes Send Notifications</strong>: Booking
+            management includes sending notifications about status changes
+          </li>
+          <li>
+            <strong>Accept/Reject Booking includes Update Item Status</strong>:
+            When a provider accepts or rejects a booking, the item status must
+            be updated
+          </li>
+          <li>
+            <strong>Return Item includes Refund Security Deposit</strong>: The
+            return process includes refunding the security deposit if the item
+            is in good condition
+          </li>
+        </ul>
+      </div>
+
+      <div class="relationship">
+        <h4>Generalization Relationships</h4>
+        <p>
+          Generalization shows that one use case is a specialized form of
+          another.
+        </p>
+        <ul>
+          <li>
+            <strong>Cancel Booking generalizes Manage Booking</strong>:
+            Canceling a booking is a specialized form of booking management
+          </li>
+          <li>
+            <strong>Extend Rental Period generalizes Manage Booking</strong>:
+            Extending a rental period is a specialized form of booking
+            management
+          </li>
+        </ul>
+      </div>
+
+      <h3>Key Use Cases Explained:</h3>
+      <ul>
+        <li>
+          <strong>Search for Items</strong>: Renters search the platform for
+          items they want to rent
+        </li>
+        <li>
+          <strong>Book Item</strong>: Renters request to book a specific item
+          for specific dates
+        </li>
+        <li>
+          <strong>Make Payment</strong>: Renters pay for the booking through the
+          platform
+        </li>
+        <li>
+          <strong>Accept/Reject Booking</strong>: Providers review booking
+          requests and either accept or reject them
+        </li>
+        <li>
+          <strong>Return Item</strong>: Process for returning the item at the
+          end of the rental period
+        </li>
+        <li>
+          <strong>Extend Rental Period</strong>: Renters can request to extend
+          the duration of the rental
+        </li>
+        <li>
+          <strong>Review Experience</strong>: After completion of the rental,
+          both parties can leave reviews
+        </li>
+      </ul>
+    </div>
+
+    <a href="index.html" class="back-link">← Back to Index</a>
+  </body>
+</html>

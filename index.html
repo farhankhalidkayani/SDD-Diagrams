@@ -1,125 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Go-Rent System Diagrams</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #2c3e50;
-            margin-top: 30px;
-        }
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        li {
-            margin-bottom: 12px;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        li:hover {
-            background-color: #e9ecef;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-            display: block;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .diagram-type {
-            font-size: 0.85em;
-            color: #6c757d;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2c3e50;
+        margin-top: 30px;
+      }
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      li {
+        margin-bottom: 12px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      li:hover {
+        background-color: #e9ecef;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+        display: block;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .diagram-type {
+        font-size: 0.85em;
+        color: #6c757d;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Go-Rent System Design Diagrams</h1>
-    <p>These diagrams represent the architectural and design elements of the Go-Rent rental platform system.</p>
-    
-    <h2>System Architecture</h2>
-    <ul>
-        <li>
-            <a href="architecture.html">System Architecture Diagram</a>
-            <span class="diagram-type">High-level architecture showing major components and their interactions</span>
-        </li>
-        <li>
-            <a href="deployment.html">Deployment Diagram</a>
-            <span class="diagram-type">Physical deployment architecture and infrastructure components</span>
-        </li>
-    </ul>
-    
-    <h2>Data Modeling</h2>
-    <ul>
-        <li>
-            <a href="erd.html">Entity Relationship Diagram (ERD)</a>
-            <span class="diagram-type">Database design showing tables and relationships</span>
-        </li>
-        <li>
-            <a href="dfd-level0.html">Data Flow Diagram (Level 0)</a>
-            <span class="diagram-type">Context diagram showing system boundaries</span>
-        </li>
-        <li>
-            <a href="dfd-level1.html">Data Flow Diagram (Level 1)</a>
-            <span class="diagram-type">Detailed data flow between system components</span>
-        </li>
-    </ul>
-    
+    <p>
+      These diagrams represent the architectural and design elements of the
+      Go-Rent rental platform system.
+    </p>
+
     <h2>Class Diagrams</h2>
     <ul>
-        <li>
-            <a href="class-user.html">User Management Component</a>
-            <span class="diagram-type">Classes for managing users, profiles, and addresses</span>
-        </li>
-        <li>
-            <a href="class-item.html">Listing Management Component</a>
-            <span class="diagram-type">Classes for managing rental items and listings</span>
-        </li>
-        <li>
-            <a href="class-booking.html">Booking and Transaction Component</a>
-            <span class="diagram-type">Classes for managing bookings, payments, and transactions</span>
-        </li>
-        <li>
-            <a href="class-communication.html">Communication Component</a>
-            <span class="diagram-type">Classes for messages, conversations, and notifications</span>
-        </li>
-        <li>
-            <a href="class-review.html">Review and Rating Component</a>
-            <span class="diagram-type">Classes for managing reviews and ratings</span>
-        </li>
+      <li>
+        <a href="class-user.html">User Management Component</a>
+        <span class="diagram-type"
+          >Classes for managing users, profiles, and addresses</span
+        >
+      </li>
+      <li>
+        <a href="class-item.html">Listing Management Component</a>
+        <span class="diagram-type"
+          >Classes for managing rental items and listings</span
+        >
+      </li>
+      <li>
+        <a href="class-booking.html">Booking and Transaction Component</a>
+        <span class="diagram-type"
+          >Classes for managing bookings, payments, and transactions</span
+        >
+      </li>
+      <li>
+        <a href="class-communication.html">Communication Component</a>
+        <span class="diagram-type"
+          >Classes for messages, conversations, and notifications</span
+        >
+      </li>
+      <li>
+        <a href="class-review.html">Review and Rating Component</a>
+        <span class="diagram-type"
+          >Classes for managing reviews and ratings</span
+        >
+      </li>
     </ul>
-    
+
     <h2>Process Flows</h2>
     <ul>
-        <li>
-            <a href="sequence-booking.html">Rental Booking Process</a>
-            <span class="diagram-type">Sequence diagram showing the booking flow</span>
-        </li>
-        <li>
-            <a href="sequence-item.html">Item Listing Process</a>
-            <span class="diagram-type">Sequence diagram showing the item listing flow</span>
-        </li>
+      <li>
+        <a href="sequence-booking.html">Rental Booking Process</a>
+        <span class="diagram-type"
+          >Sequence diagram showing the booking flow</span
+        >
+      </li>
+      <li>
+        <a href="sequence-item.html">Item Listing Process</a>
+        <span class="diagram-type"
+          >Sequence diagram showing the item listing flow</span
+        >
+      </li>
     </ul>
-    
-    <footer style="margin-top: 50px; text-align: center; color: #6c757d; font-size: 0.9em;">
-        <p>Go-Rent System Documentation - Software Design Document Diagrams</p>
+
+    <h2>Use Case Diagrams</h2>
+    <ul>
+      <li>
+        <a href="use-case.html">General Use Case Diagram</a>
+        <span class="diagram-type"
+          >Overview of actors and their interactions with the system</span
+        >
+      </li>
+      <li>
+        <a href="use-case-rental.html">Rental Process Use Cases</a>
+        <span class="diagram-type"
+          >Detailed use cases for rental process with includes and
+          generalization relationships</span
+        >
+      </li>
+    </ul>
+
+    <footer
+      style="
+        margin-top: 50px;
+        text-align: center;
+        color: #6c757d;
+        font-size: 0.9em;
+      "
+    >
+      <p>Go-Rent System Documentation - Software Design Document Diagrams</p>
     </footer>
-</body>
+  </body>
 </html>

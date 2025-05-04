@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go-Rent - Use Case Diagram with PlantUML</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 10px;
+      }
+      h2 {
+        color: #2c3e50;
+        margin-top: 30px;
+      }
+      h3 {
+        color: #2c3e50;
+        margin-top: 25px;
+      }
+      .diagram-container {
+        margin: 40px 0;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .description {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #e9ecef;
+        border-radius: 4px;
+      }
+      .actor-group {
+        margin-bottom: 20px;
+      }
+      .usecase-group {
+        margin-bottom: 20px;
+      }
+      .relationship-group {
+        margin-bottom: 20px;
+      }
+      .plantuml-diagram {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .plantuml-source {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 15px;
+        margin-top: 20px;
+        font-family: monospace;
+        text-align: left;
+        white-space: pre-wrap;
+      }
+      .note {
+        background-color: #fffacd;
+        border-left: 4px solid #ffd700;
+        padding: 10px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .uml-legend {
+        margin-top: 30px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Go-Rent System Use Case Diagram</h1>
+
+    <div class="description">
+      <p>
+        This use case diagram illustrates the core functionality of the Go-Rent
+        system from the perspective of different stakeholders. It captures how
+        various actors interact with the system's features and displays the
+        relationships between different use cases.
+      </p>
+      <p>
+        Go-Rent is a peer-to-peer rental platform that allows users to list
+        items for rent (Providers) and rent items from others (Renters). The
+        system facilitates the entire rental process, from listing and searching
+        to booking, payment, and reviews.
+      </p>
+    </div>
+
+    <div class="diagram-container">
+      <!-- Method 1: Using PlantUML Web Server -->
+      <img
+        src="//www.plantuml.com/plantuml/png/bLRTRnev47_Vls8kBxcJGkxzX50ISg6HY8A0AAg45BdUON7PjP5jajAF_xtUiLTu4ANf4_ZtOS_73CcLyyBwRLCNvp3pkrhfgd1hfJV2YWQs3gLm2DyAW1iXrvKrMrqEJMqiFA-KnrbZrjYInfPe8t4hx7fM2uyZAtQ1kxRMlFs2ajxOKruId7ZvHv55Qr5weQlwUBpU2ks24BK_6N2uyXpkZ9K8edtTWJVWDYZLKabmgaHN_5NYKcc4yVN7nwVvo_Z_k_dB_F5bUZ_wC0_kCIuzATCD1Nt0sHIrHti6ma7y2lq-PJWO1DTKLQkZjearhm6DndJWrXlZlMaERDTbepHvw5jcwEuLkmQrN-ZPpdbiI9gmY6IMyCXjpDcl45oaFxNL5NPNx2j_DZAzDZT8Tr8hphjqjmwX7IWNm6wsGbKgvLfMw7AX7uGM5OR6ot2vfvWwGMwQeR1o1KjZ5xgzNDHm7zvpP8XaBhynPaq2ujjJpZw8DNQPaw05qfdfA3QoArt5joBMGRdwsIgF8VXNXMya9I2UfxbmQ9fcgvKKGVwc_6gXMSSpkhLHFJl1yOeEBGOnvRlGO-Ly28skYaH2ZcH63Clic3Zq1ZV-tob-HXcc9-LEdaX5XlTOedhbHKvOWjvRkSdfocKhbf6JLBUq2Rnel0JPBaGa0anfIhJjaqEZVPTD1oOiruzGH_qKDyRwMDqEJ5WNOAf6js5TfFbreVSIdMErJ5Y2kikUaXkKNg5LNcY9y7T5BzVgg_3Aw7yAO8C9lTxtmS5Kmt_GxtFROC1za_Vxw0Ssb4cZzFkVsAmfiOVXmltcxw6usndGFfOTizLbQ1vNHkIfPp3RkI9k6m-9WMol64CF7sFOgZ22xGMZMC4PmMQze2aFC9lW3EMZkYSEPx9WVms2ud3Ew9y6eKjXItXw68F5chhiLchZmEXw1prGMjRR4Yy0ltZKvGNmYIZej_doSf2tZYOd6SF8P0mfMHY7OawIdfUKw_VlPnqvr1Hnx4X6-fQE-GGsDvA4ZniNy-gJdatX7wadlrUpsUJog_2nRUgV"
+        alt="UML Use Case Diagram for Go-Rent System"
+        class="plantuml-diagram"
+      />
+    </div>
+
+    <div class="uml-legend">
+      <h3>UML Notation Legend</h3>
+      <ul>
+        <li>
+          <strong>Actors</strong>: Represented as stick figures (Renter,
+          Provider, Admin) or rectangles with «actor» stereotype (Payment
+          System)
+        </li>
+        <li>
+          <strong>Use Cases</strong>: Represented as ovals inside the system
+          boundary
+        </li>
+        <li>
+          <strong>System Boundary</strong>: Rectangle containing all use cases
+        </li>
+        <li>
+          <strong>Associations</strong>: Solid lines connecting actors to use
+          cases they interact with
+        </li>
+        <li>
+          <strong>Include Relationships</strong>: Dashed arrows with «include»
+          stereotype - one use case includes functionality from another
+        </li>
+        <li>
+          <strong>Extend Relationships</strong>: Dashed arrows with «extend»
+          stereotype - one use case conditionally extends another
+        </li>
+        <li>
+          <strong>Generalization Relationships</strong>: Solid lines with
+          triangular arrowheads - one use case is a specialized form of another
+        </li>
+      </ul>
+    </div>
+
+    <h2>Main Actors and Their Roles</h2>
+
+    <div class="actor-group">
+      <h3>Renter</h3>
+      <p>
+        Users who want to rent items from providers. Renters can search for
+        available items, book them for specific time periods, make payments,
+        manage their bookings, write reviews after rental completion, and
+        communicate with providers.
+      </p>
+    </div>
+
+    <div class="actor-group">
+      <h3>Provider</h3>
+      <p>
+        Users who list their items for rent on the platform. Providers can
+        create and manage item listings, accept or reject booking requests,
+        receive payments for successful rentals, write reviews about renters,
+        and communicate with renters throughout the process.
+      </p>
+    </div>
+
+    <div class="actor-group">
+      <h3>Admin</h3>
+      <p>
+        System administrators with platform management capabilities. Admins can
+        manage overall system operations, moderate content posted by users
+        (listings, reviews, messages), and generate reports for business
+        analytics.
+      </p>
+    </div>
+
+    <div class="actor-group">
+      <h3>Payment System</h3>
+      <p>
+        External system that processes payment transactions between renters and
+        providers. This handles the secure transfer of funds, including rental
+        fees, security deposits, and refunds.
+      </p>
+    </div>
+
+    <h2>Key Use Cases</h2>
+
+    <div class="usecase-group">
+      <h3>Common Use Cases</h3>
+      <p>
+        <strong>Register and Manage Account</strong> - Users can sign up, log
+        in, and manage their personal profiles and account settings.
+      </p>
+    </div>
+
+    <div class="usecase-group">
+      <h3>Renter Use Cases</h3>
+      <p>
+        <strong>Search for Rental Items</strong> - Browse and filter available
+        items based on various criteria like location, category, price, and
+        availability dates.
+      </p>
+      <p>
+        <strong>Book Item</strong> - Request to rent an item for a specific time
+        period.
+      </p>
+      <p>
+        <strong>Make Payment</strong> - Complete payment for a booking,
+        including rental fee and security deposit.
+      </p>
+      <p>
+        <strong>Manage Bookings</strong> - View, modify, or cancel existing
+        bookings.
+      </p>
+      <p>
+        <strong>Write Review</strong> - Provide feedback and ratings for
+        providers and rented items after rental completion.
+      </p>
+      <p>
+        <strong>Communicate with Provider</strong> - Send messages to providers
+        regarding bookings, items, or arrangements.
+      </p>
+    </div>
+
+    <div class="usecase-group">
+      <h3>Provider Use Cases</h3>
+      <p>
+        <strong>Create Item Listing</strong> - Add items to the platform with
+        descriptions, photos, availability calendar, and pricing.
+      </p>
+      <p>
+        <strong>Manage Listings</strong> - Edit, update, or remove item
+        listings.
+      </p>
+      <p>
+        <strong>Accept/Reject Booking</strong> - Review incoming booking
+        requests and either approve or decline them.
+      </p>
+      <p>
+        <strong>Receive Payment</strong> - Collect payments for completed
+        rentals.
+      </p>
+      <p>
+        <strong>Write Review</strong> - Provide feedback and ratings for renters
+        after rental completion.
+      </p>
+      <p>
+        <strong>Communicate with Renter</strong> - Send messages to renters
+        regarding bookings, items, or arrangements.
+      </p>
+    </div>
+
+    <div class="usecase-group">
+      <h3>Admin Use Cases</h3>
+      <p>
+        <strong>Manage System</strong> - Oversee platform operations, handle
+        user account issues, and manage system settings.
+      </p>
+      <p>
+        <strong>Moderate Content</strong> - Review and manage user-generated
+        content, handle disputes, and ensure platform guidelines are followed.
+      </p>
+      <p>
+        <strong>Generate Reports</strong> - Create and analyze reports on
+        platform metrics, user activity, and business performance.
+      </p>
+    </div>
+
+    <div class="usecase-group">
+      <h3>Payment System Use Case</h3>
+      <p>
+        <strong>Process Payment</strong> - Handle the secure transfer of funds
+        between renters and providers, including payment processing, deposit
+        management, and refunds.
+      </p>
+    </div>
+
+    <h2>Key Relationships Between Use Cases</h2>
+
+    <div class="relationship-group">
+      <h3>Include Relationships</h3>
+      <p>
+        <strong>Book Item includes Verify Item Availability</strong> - When
+        booking an item, the system must verify the item is available for the
+        requested dates.
+      </p>
+      <p>
+        <strong>Book Item includes Make Payment</strong> - The booking process
+        includes making a payment.
+      </p>
+      <p>
+        <strong>Make Payment includes Process Payment</strong> - The payment
+        action includes processing through the external payment system.
+      </p>
+      <p>
+        <strong>Process Payment includes Receive Payment</strong> - When a
+        payment is processed, the provider receives the payment.
+      </p>
+    </div>
+
+    <div class="relationship-group">
+      <h3>Extend Relationships</h3>
+      <p>
+        <strong>Search for Items extends Book Item</strong> - After searching, a
+        user may extend the interaction to book an item.
+      </p>
+      <p>
+        <strong>Accept/Reject Booking extends Manage Bookings</strong> - When a
+        provider accepts or rejects a booking, this extends the booking
+        management.
+      </p>
+      <p>
+        <strong>Write Review extends Manage Bookings</strong> - After a booking
+        is completed, users can extend the interaction to write reviews.
+      </p>
+      <p>
+        <strong>Moderate Content extends various use cases</strong> - Admin
+        moderation can extend to content created in listings, reviews, and other
+        user actions.
+      </p>
+    </div>
+
+    <div class="note">
+      <p>
+        <strong>Note:</strong> This diagram shows the main actors and use cases
+        of the Go-Rent system. For more detailed diagrams of specific processes,
+        like the rental workflow or payment processing, separate use case
+        diagrams may be created to maintain clarity and focus.
+      </p>
+    </div>
+
+    <div class="description">
+      <h3>Understanding Use Case Diagrams</h3>
+      <p>
+        Use case diagrams are a type of behavioral UML diagram that shows the
+        functionality of a system from an external observer's perspective. They
+        help visualize:
+      </p>
+      <ul>
+        <li>Who interacts with the system (actors)</li>
+        <li>What functionality the system provides (use cases)</li>
+        <li>How actors and use cases are related</li>
+        <li>Relationships between different use cases</li>
+      </ul>
+      <p>
+        These diagrams are valuable for requirements gathering, communicating
+        with stakeholders, and establishing a clear overview of system
+        functionality without getting into implementation details.
+      </p>
+    </div>
+
+    <script>
+      // You could add JavaScript here to make the diagram interactive or dynamic
+    </script>
+  </body>
+</html>
